@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const PageNew = ({ addPage }) => {
+const PageForm = ({ addPage, id, title, body, author, setEdit, editPage }) => {
   const [page, setPage] = useState({ title: '', body: '', author: '' })
+
+  useEffect( () => {
+    if (id) {
+      setPage({ title, body, author })
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPage(page)
+    if (id) {
+      editPage(id, page)
+      setEdit(false)
+    } else {
+      addPage(page)
+    }
     setPage({ title: '', body: '', author: '' })
   }
 
   return (
     <>
-      <h1>New Page</h1>
+      <h1>{id ? 'Edit' : 'New'} Page</h1>
       <form onSubmit={handleSubmit}>
         <input
           name='title' 
@@ -39,4 +50,4 @@ const PageNew = ({ addPage }) => {
   )
 }
 
-export default PageNew;
+export default PageForm;
