@@ -46,6 +46,7 @@ const App = () => {
       {/* <Navbar />
       <Home />
       <About /> */}
+      <h1>My Blog</h1>
       <h1>All Pages</h1>
       <PageForm addPage={addPage} />
       <PageList 
