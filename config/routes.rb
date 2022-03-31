@@ -22,4 +22,6 @@ Rails.application.routes.draw do
     # update 'pages/update'
     # delete 'pages/destroy'
   end
+
+  get '*other', to: 'static#index'
 end
